@@ -55,8 +55,8 @@ function prepare_question(x::Numericq, ID)
         Mustache.render(html_templates["input_grading_script"];
                         ID = ID,
                         CORRECT_ANSWER = "(Math.abs(this.value - $(x.val)) <= $(x.atol))",
-                        INCORRECT = "Incorrect",
-                        CORRECT = "Correct"
+                        INCORRECT = "Incorrecto",
+                        CORRECT = "Correcto"
                         )
     (FORM, GRADING_SCRIPT)
 end
@@ -75,8 +75,8 @@ function prepare_question(x::Stringq, ID)
         Mustache.render(html_templates["input_grading_script"];
                         ID = ID,
                         CORRECT_ANSWER = """RegExp('$(x.re.pattern)').test(this.value)""",
-                        INCORRECT = "Incorrect",
-                        CORRECT = "Correct"
+                        INCORRECT = "Incorrecto",
+                        CORRECT = "Correcto"
                         )
     (FORM, GRADING_SCRIPT)
 
@@ -102,8 +102,8 @@ function prepare_question(x::Radioq, ID)
     GRADING_SCRIPT = Mustache.render(html_templates["radio_grading_script"];
                                      ID = ID,
                                      CORRECT_ANSWER = x.answer,
-                                     INCORRECT = "Incorrect",
-                                     CORRECT = "Correct"
+                                     INCORRECT = "Incorrecto",
+                                     CORRECT = "Correcto"
                                      )
     FORM = Mustache.render(html_templates["Radioq"];
                            ID = ID,
@@ -146,7 +146,7 @@ function prepare_question(x::Multiq, ID)
                                      ID = ID,
                                      CORRECT_ANSWER = x.answer,
                                      INCORRECT = "Not yet",
-                                     CORRECT = "Correct",
+                                     CORRECT = "Correcto",
                              )
     FORM = Mustache.render(html_templates["Multiq"];
                            ID = ID,
@@ -169,7 +169,7 @@ function prepare_question(x::MultiButtonq, ID)
                                      CORRECT_ANSWER = length(x.answer) > 0 ? x.answer : "[]",
                                      SELECTED_COLOR = BLUE,
                                      INCORRECT = "Something isn't correct",
-                                     CORRECT = "Correct",
+                                     CORRECT = "Correcto",
                                      CORRECT_flag = "✓ ",
                                      INCORRECT_flag ="⨉ "
 
@@ -192,7 +192,7 @@ function prepare_question(x::Matchq, ID)
                                      ID = ID,
                                      CORRECT_ANSWER = collect(string.(x.answer)),
                                      INCORRECT = "Not yet",
-                                     CORRECT = "Correct",
+                                     CORRECT = "Correcto",
                                      )
     FORM = Mustache.render(html_templates["Matchq"];
                            ID = ID,
@@ -219,7 +219,7 @@ function blank(x::FillBlankChoiceQ, ID)
                                      ID = ID,
                                      CORRECT_ANSWER = collect(string.(x.answer)),
                                      INCORRECT = "Not yet",
-                                     CORRECT = "Correct",
+                                     CORRECT = "Correcto",
                                      )
     (BLANK, GRADING_SCRIPT)
 end
@@ -236,8 +236,8 @@ function blank(x::FillBlankStringQ, ID)
         Mustache.render(html_templates["input_grading_script"];
                         ID = ID,
                         CORRECT_ANSWER = """RegExp('$(x.re.pattern)').test(this.value)""",
-                        INCORRECT = "Incorrect",
-                        CORRECT = "Correct"
+                        INCORRECT = "Incorrecto",
+                        CORRECT = "Correcto"
                         )
         (BLANK, GRADING_SCRIPT)
 end
@@ -253,8 +253,8 @@ function blank(x::FillBlankNumericQ, ID)
         Mustache.render(html_templates["input_grading_script"];
                         ID = ID,
                         CORRECT_ANSWER = "(Math.abs(this.value - $(x.val)) <= $(x.atol))",
-                        INCORRECT = "Incorrect",
-                        CORRECT = "Correct"
+                        INCORRECT = "Incorrecto",
+                        CORRECT = "Correcto"
                         )
         (BLANK, GRADING_SCRIPT)
 end
@@ -286,8 +286,8 @@ function prepare_question(x::HotspotQ, ID)
         Mustache.render(html_templates["hotspot_grading_script"];
                         ID = ID,
                         CORRECT_ANSWER = CORRECT_ANSWER,
-                        INCORRECT = "Incorrect",
-                        CORRECT = "Correct"
+                        INCORRECT = "Incorrecto",
+                        CORRECT = "Correcto"
                         )
 
 
@@ -313,8 +313,8 @@ function prepare_question(x::PlotlyLightQ, ID)
         Mustache.render(html_templates["plotlylight_grading_script"];
                         ID = ID,
                         CORRECT_ANSWER = CORRECT_ANSWER,
-                        INCORRECT = "Incorrect",
-                        CORRECT = "Correct"
+                        INCORRECT = "Incorrecto",
+                        CORRECT = "Correcto"
                         )
 
     FORM = sprint(io -> show(io, "text/html", p))

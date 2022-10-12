@@ -405,7 +405,7 @@ yesnoq(true)
 ```
 
 """
-yesnoq(ans::AbstractString, args...; kwargs...) = radioq(["Yes", "No"], ans == "yes" ? 1 : 2, args...; keep_order=true, kwargs...)
+yesnoq(ans::AbstractString, args...; kwargs...) = radioq(["Si", "No"], ans == "yes" ? 1 : 2, args...; keep_order=true, kwargs...)
 yesnoq(ans::Bool, args...; kwargs...) = yesnoq(ans ? "yes" : "no", args...;kwargs...)
 
 ## --------
