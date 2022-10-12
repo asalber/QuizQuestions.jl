@@ -44,7 +44,7 @@ function prepare_question(x::Numericq, ID)
 
     FORM = Mustache.render(html_templates["inputq_form"];
                            ID=ID,
-                           PLACEHOLDER = isnothing(x.placeholder) ? "Numeric answer" : x.placeholder,
+                           PLACEHOLDER = isnothing(x.placeholder) ? "Respuesta numérica" : x.placeholder,
                            UNITS=x.units,
                            TYPE="number",
                            HINT = length(x.label) == 0 ? x.hint : ""
@@ -66,7 +66,7 @@ function prepare_question(x::Stringq, ID)
 
     FORM = Mustache.render(html_templates["inputq_form"];
                            ID=ID,
-                           PLACEHOLDER = isnothing(x.placeholder) ? "Text answer" : x.placeholder,
+                           PLACEHOLDER = isnothing(x.placeholder) ? "Respuesta de texto" : x.placeholder,
                            TYPE="text",
                            HINT = length(x.label) == 0 ? x.hint : ""
                            )
@@ -145,7 +145,7 @@ function prepare_question(x::Multiq, ID)
     GRADING_SCRIPT = Mustache.render(html_templates["multi_grading_script"];
                                      ID = ID,
                                      CORRECT_ANSWER = x.answer,
-                                     INCORRECT = "Not yet",
+                                     INCORRECT = "Todavía no es correcto",
                                      CORRECT = "Correcto",
                              )
     FORM = Mustache.render(html_templates["Multiq"];
@@ -168,7 +168,7 @@ function prepare_question(x::MultiButtonq, ID)
                                      ID = ID,
                                      CORRECT_ANSWER = length(x.answer) > 0 ? x.answer : "[]",
                                      SELECTED_COLOR = BLUE,
-                                     INCORRECT = "Something isn't correct",
+                                     INCORRECT = "Hay algo que no es correcto",
                                      CORRECT = "Correcto",
                                      CORRECT_flag = "✓ ",
                                      INCORRECT_flag ="⨉ "
@@ -191,7 +191,7 @@ function prepare_question(x::Matchq, ID)
     GRADING_SCRIPT = Mustache.render(html_templates["matchq_grading_script"];
                                      ID = ID,
                                      CORRECT_ANSWER = collect(string.(x.answer)),
-                                     INCORRECT = "Not yet",
+                                     INCORRECT = "Todavía no es correcto",
                                      CORRECT = "Correcto",
                                      )
     FORM = Mustache.render(html_templates["Matchq"];
@@ -218,7 +218,7 @@ function blank(x::FillBlankChoiceQ, ID)
     GRADING_SCRIPT = Mustache.render(html_templates["matchq_grading_script"];
                                      ID = ID,
                                      CORRECT_ANSWER = collect(string.(x.answer)),
-                                     INCORRECT = "Not yet",
+                                     INCORRECT = "Todavía no es correcto",
                                      CORRECT = "Correcto",
                                      )
     (BLANK, GRADING_SCRIPT)
